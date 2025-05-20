@@ -501,7 +501,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 min-h-[calc(100vh-64px)] flex flex-col justify-center pt-0 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full md:mt-0 mt-[-150px]">
           {/* Left content */}
           <div className="order-2 lg:order-1 text-center lg:text-left">
             <motion.div
@@ -512,7 +512,7 @@ const Hero = () => {
               variants={textVariants}
             >
               <img 
-                src="/assets/centrologo.png" 
+                src="/assets/logo/centrologo.png" 
                 alt="Centro Logo" 
                 width={400} 
                 height={120} 
@@ -804,23 +804,27 @@ const Hero = () => {
             </svg>
           </div>
         </div>
-        
-        {/* Explore More Button - Simple downward arrow - Fixed positioning for better centering */}
-        <motion.div 
-          className="absolute bottom-8 left-0 right-0 mx-auto w-10 flex justify-center cursor-pointer"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          onClick={scrollToNextSection}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="flex flex-col items-center"
+
+        {/* Scroll indicator - Adjusted position for mobile */}
+        <div className="absolute bottom-24 md:bottom-8 left-0 right-0 flex justify-center">
+          <motion.button
+            onClick={scrollToNextSection}
+            className="flex flex-col items-center text-gray-500 hover:text-[#ff4136] transition-colors"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.5, duration: 0.5 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
-            <ChevronDown className="h-10 w-10 text-[#ff4136]" />
-          </motion.div>
-        </motion.div>
+            <span className="text-sm font-medium mb-1px">Scroll Down</span>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+            >
+              <ChevronDown size={24} />
+            </motion.div>
+          </motion.button>
+        </div>
       </div>
     </section>
   );

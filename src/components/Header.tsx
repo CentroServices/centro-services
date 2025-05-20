@@ -89,7 +89,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           <RouterLink to="/" className="relative z-50">
             <img 
-              src="/assets/logo.svg" 
+              src="/assets/logo/logo.svg" 
               alt="Centro Service Solutions" 
               className={`h-12 w-auto transition-all duration-300 ${shouldInvertLogo ? 'brightness-0 invert' : ''}`}
             />

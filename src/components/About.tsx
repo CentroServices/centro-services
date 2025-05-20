@@ -100,11 +100,11 @@ const About: React.FC = () => {
             </h2>
             
             <p className="text-lg text-gray-700 mb-5">
-              At Centro Service, we've been at the forefront of telecommunications innovation in Turkey for over a decade. Our commitment to excellence and cutting-edge technology has established us as a trusted partner for businesses across the nation.
+            At Centro Service, we provide end-to-end engineering, technical, and consultancy solutions tailored to the evolving needs of the telecommunications industry.
             </p>
             
             <p className="text-lg text-gray-700 mb-8">
-              We combine deep industry expertise with innovative solutions to deliver reliable, scalable, and future-proof telecommunication systems that drive business growth and digital transformation.
+            With a strong focus on operational excellence, cost efficiency, and sustainable growth, we support our clients in managing complex network infrastructures, optimizing performance, and achieving long-term strategic goals. Backed by deep industry knowledge and a commitment to innovation, we deliver measurable value and scalable results across every stage of the service lifecycle.
             </p>
             
             <div className="grid grid-cols-2 gap-6">

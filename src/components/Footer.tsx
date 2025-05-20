@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           <motion.div className="space-y-6" variants={itemVariants}>
             <RouterLink to="/">
               <img 
-                src="/assets/logo.svg" 
+                src="/assets/logo/logo.svg" 
                 alt="Centro Service Solutions" 
                 className="h-12 w-auto brightness-0 invert"
               />

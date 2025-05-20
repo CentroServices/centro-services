@@ -303,7 +303,7 @@ const Services = () => {
       description:
         "We offer network planning services to establish new networks and optimize legacy networks. Major service activities are Radio Network Planning, Transmission Network Planning and Indoor Network Planning.",
       href: "/services/network-planning",
-      image: "/assets/network-planning-and-optimization-services.jpg",
+      image: "/assets/general/network-planning-and-optimization-services.jpg",
       category: "Engineering",
     },
     {
@@ -312,7 +312,7 @@ const Services = () => {
       description:
         "Cutting-edge Fiber Network Rollout Solutions Of Centro, With Robust Presence And Unparalleled Global Experience/Ability With Multi-Domain Capabilities.",
       href: "/services/fiber-network",
-      image: "/assets/fiber-optic.jpg",
+      image: "/assets/general/fiber-optic.jpg",
       category: "Engineering",
     },
     {
@@ -321,7 +321,7 @@ const Services = () => {
       description:
         "Centro Roll-out Back Office Services, allows customers to reach their desired network quality or expansion targets with the installation of their networks (All-Gs) much faster and systematic, by reducing the number of site visits and speeding up the acceptance processes with Scoping, Material Management, Close Out Package preparation services.",
       href: "/services/roll-out-services",
-      image: "/assets/roll-out-back-office-services-centro.jpg",
+      image: "/assets/general/roll-out-back-office-services-centro.jpg",
       category: "Engineering",
     },
     {
@@ -330,7 +330,7 @@ const Services = () => {
       description:
         "As a concept, CENTRO offers a PMO-as-a-Service (PMOaaS) solution for organizations in the Telco and IT industries that want to improve their communication, governance, controls, execution, and profitability of programs. Our solution accelerates the deployment of standard project management methodology, tools, processes, and procedures, helping partners quick starts in a highly cost efficient form and avoid common errors, challenges in new engagements.",
       href: "/services/pmo-service",
-      image: "assets/pmo-as-a-service.jpg",
+      image: "assets/general/pmo-as-a-service.jpg",
       category: "Solutions",
     },
     {
@@ -339,7 +339,7 @@ const Services = () => {
       description:
         "Centro consultancy team consists of highly skilled and globally experienced, industry/domain-centric certified solution architects and subject matter experts with global experiences in critical technologies such as but not limited with vRAN, OCP Deployment and holding globally recognized certifications of Red Hat OpenShift and Containers stream, VMware DC Virtualization stream, CCNP, CCNA, CCIE-DC, CCIERS, CISSP and PMI stream.",
       href: "/services/consultancy",
-      image: "/assets/consulting.png",
+      image: "/assets/general/consulting.png",
       category: "Consultancy",
     },
     {
@@ -348,7 +348,7 @@ const Services = () => {
       description:
         "Round-the-clock expert technical support ensuring your telecommunication systems operate at peak performance.",
       href: "/contact",
-      image: "/assets/technical-support.jpg",
+      image: "/assets/general/technical-support.jpg",
       category: "Support",
     },
   ]

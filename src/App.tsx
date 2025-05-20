@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
@@ -22,39 +24,42 @@ import CookieConsent from './components/CookieConsent';
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <AnimatePresence>
-        <motion.div 
-          className="min-h-screen overflow-x-hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <Header />
-          <main className="overflow-x-hidden">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/services/network-planning" element={<NetworkPlanningPage />} />
-              <Route path="/services/fiber-network" element={<FiberNetworkPage />} />
-              <Route path="/services/roll-out-services" element={<RollOutServicesPage />} />
-              <Route path="/services/pmo-service" element={<PmoServicePage />} />
-              <Route path="/services/consultancy" element={<ConsultancyPage />} />
-              <Route path="/resources" element={<ResourcesPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/news" element={<NewsPage />} />
-              <Route path="/news/:id" element={<NewsDetailsPage />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            </Routes>
-          </main>
-          <Footer />
-          <CookieConsent />
-          <ScrollToTopButton />
-        </motion.div>
-      </AnimatePresence>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <SEO />
+        <AnimatePresence>
+          <motion.div 
+            className="min-h-screen overflow-x-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Header />
+            <main className="overflow-x-hidden">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/services" element={<ServicesPage />} />
+                <Route path="/services/network-planning" element={<NetworkPlanningPage />} />
+                <Route path="/services/fiber-network" element={<FiberNetworkPage />} />
+                <Route path="/services/roll-out-services" element={<RollOutServicesPage />} />
+                <Route path="/services/pmo-service" element={<PmoServicePage />} />
+                <Route path="/services/consultancy" element={<ConsultancyPage />} />
+                <Route path="/resources" element={<ResourcesPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/news" element={<NewsPage />} />
+                <Route path="/news/:id" element={<NewsDetailsPage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              </Routes>
+            </main>
+            <Footer />
+            <CookieConsent />
+            <ScrollToTopButton />
+          </motion.div>
+        </AnimatePresence>
+      </Router>
+    </HelmetProvider>
   );
 }
 
