@@ -1,0 +1,73 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Ahmet Yilmaz",
+      "position": "CTO",
+      "company": "TechInnovate Istanbul",
+      "content": "Centro Service revolutionized our entire communication infrastructure. Their enterprise solutions have significantly improved our operational efficiency while reducing our overall telecom costs by 30%.",
+      "rating": 5,
+      "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": 2,
+      "name": "Zeynep Kaya",
+      "position": "IT Director",
+      "company": "Ankara University",
+      "content": "Working with Centro Service on our campus-wide network upgrade was a seamless experience. Their education-focused solutions perfectly aligned with our needs for reliable, high-density WiFi across multiple buildings.",
+      "rating": 5,
+      "image": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": 3,
+      "name": "Mehmet Öztürk",
+      "position": "Operations Manager",
+      "company": "Izmir Manufacturing",
+      "content": "The industrial telecommunications solution provided by Centro Service has withstood the harsh conditions of our manufacturing facility while delivering consistent performance. Their support team is responsive and knowledgeable.",
+      "rating": 4,
+      "image": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    }
+  ],
+  "partners": [
+    {
+      "id": 1,
+      "name": "Turkcell",
+      "logo": "/assets/partners/turkcell.png"
+    },
+    {
+      "id": 2,
+      "name": "Karel",
+      "logo": "/assets/partners/karel.png"
+    },
+    {
+      "id": 3,
+      "name": "BDH",
+      "logo": "/assets/partners/bdh.png"
+    },
+    {
+      "id": 4,
+      "name": "Turkcell Superonline",
+      "logo": "/assets/partners/turkcell-superonline.png"
+    },
+    {
+      "id": 5,
+      "name": "ZTE",
+      "logo": "/assets/partners/zte.png"
+    },
+    {
+      "id": 6,
+      "name": "Nokia",
+      "logo": "/assets/partners/nokia.png"
+    },
+    {
+      "id": 7,
+      "name": "Huawei",
+      "logo": "/assets/partners/huawei.png"
+    },
+    {
+      "id": 8,
+      "name": "Iris",
+      "logo": "/assets/partners/iris.png"
+    }
+  ]
+}

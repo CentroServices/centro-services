@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 24 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 0% 10%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 0% 10%;
+ 
+    --primary: 3 100% 61%;
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 3 100% 95%;
+    --secondary-foreground: 3 100% 61%;
+ 
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+ 
+    --accent: 3 100% 95%;
+    --accent-foreground: 3 100% 61%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 3 100% 61%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 24 0% 10%;
+    --foreground: 0 0% 98%;
+ 
+    --card: 24 0% 10%;
+    --card-foreground: 0 0% 98%;
+ 
+    --popover: 24 0% 10%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --primary: 3 100% 61%;
+    --primary-foreground: 0 0% 98%;
+ 
+    --secondary: 3 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 3 100% 15%;
+    --muted-foreground: 0 0% 63.9%;
+ 
+    --accent: 3 100% 15%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 3 100% 15%;
+    --input: 3 100% 15%;
+    --ring: 3 100% 61%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+  }
+  html {
+    @apply overflow-x-hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+}
+
+/* Infinite scroll animation styles */
+.scroller {
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  padding: 2rem 0;
+  width: max-content;
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  animation: scroll var(--_animation-duration, 20s) var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] {
+  --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+  --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+  --_animation-duration: 10s;
+}
+
+.scroller[data-speed="slow"] {
+  --_animation-duration: 30s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroller[data-animated="true"] .scroller__inner {
+    animation-play-state: paused;
+  }
+}
