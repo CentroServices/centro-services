@@ -103,11 +103,7 @@ const Contact: React.FC = () => {
           >
             <motion.div 
               className="bg-white rounded-xl shadow-lg p-8"
-              whileHover={{ 
-                y: -5,
-                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                transition: { type: "spring", stiffness: 400, damping: 10 }
-              }}
+              // Removed whileHover effect
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
               
@@ -233,7 +229,7 @@ const Contact: React.FC = () => {
                       : 'bg-red-600 hover:bg-red-700'
                   }`}
                   variants={itemVariants}
-                  whileHover={{ scale: 1.02 }}
+                  // Removed whileHover effect
                   whileTap={{ scale: 0.98 }}
                 >
                   {isSubmitting ? (
@@ -268,11 +264,7 @@ const Contact: React.FC = () => {
           >
             <motion.div 
               className="bg-white rounded-xl shadow-lg p-8"
-              whileHover={{ 
-                y: -5,
-                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                transition: { type: "spring", stiffness: 400, damping: 10 }
-              }}
+              // Removed whileHover effect
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
               

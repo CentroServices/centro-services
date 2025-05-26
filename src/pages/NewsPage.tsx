@@ -33,7 +33,7 @@ const NewsPage = () => {
     }, 800); // 800ms delay for loading effect
   };
   
-  const handlePageClick = (pageIndex) => {
+  const handlePageClick = (pageIndex: number) => {
     if (pageIndex !== currentPage) {
       setIsLoading(true);
       setTimeout(() => {

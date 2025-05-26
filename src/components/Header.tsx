@@ -89,12 +89,13 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           <RouterLink to="/" className="relative z-50">
             <img 
-              src="/assets/logo/logo.svg" 
+              src="/assets/logo/centrologo.png" 
               alt="Centro Service Solutions" 
               className={`h-12 w-auto transition-all duration-300 ${shouldInvertLogo ? 'brightness-0 invert' : ''}`}
             />
           </RouterLink>
           
+          {/* Desktop Navigation - Unchanged */}
           <div className="hidden md:flex items-center space-x-8">
             <nav className="flex items-center space-x-8">
               <div className="relative group">
@@ -198,11 +199,14 @@ const Header: React.FC = () => {
             </button>
           </div>
           
+          {/* Mobile Menu Toggle Button - Enhanced */}
           <motion.button
             onClick={toggleMenu}
-            className={`md:hidden relative z-50 p-2 transition-colors duration-200 ${
-              isScrolled || location.pathname !== '/' || isMenuOpen ? 'text-gray-800' : 'text-white'
-            } hover:text-red-500`}
+            className={`md:hidden relative z-50 p-2 rounded-full transition-all duration-300 ${
+              isMenuOpen 
+                ? 'bg-red-50 text-red-500' 
+                : `${isScrolled || location.pathname !== '/' ? 'text-gray-800' : 'text-white'}`
+            } hover:bg-red-50 hover:text-red-500`}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.9 }}
           >
@@ -210,20 +214,20 @@ const Header: React.FC = () => {
               {isMenuOpen ? (
                 <motion.div
                   key="close"
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: 90 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
                   <X size={24} />
                 </motion.div>
               ) : (
                 <motion.div
                   key="menu"
-                  initial={{ opacity: 0, rotate: 90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: -90 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
                   <Menu size={24} />
                 </motion.div>
@@ -233,67 +237,88 @@ const Header: React.FC = () => {
         </div>
       </div>
 
+      {/* Mobile Menu - Enhanced */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-white z-40 md:hidden overflow-hidden flex flex-col"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 bg-white/95 backdrop-blur-sm z-40 md:hidden overflow-hidden flex flex-col"
           >
             <div className="flex-1 overflow-y-auto">
-              <div className="min-h-screen flex flex-col items-center justify-center p-6">
+              <div className="min-h-screen flex flex-col pt-24 px-6">
                 <AnimatePresence mode="wait">
                   {expandedSection ? (
                     <motion.div
                       key="expanded"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -50 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 26 }}
                       className="w-full"
                     >
-                      <button
+                      <motion.button
                         onClick={() => setExpandedSection(null)}
-                        className="flex items-center text-gray-600 mb-8 mx-auto"
+                        className="flex items-center text-gray-600 mb-8 hover:text-red-500 transition-colors duration-200"
+                        whileHover={{ x: -5 }}
+                        whileTap={{ scale: 0.98 }}
                       >
                         <ArrowLeft size={20} className="mr-2" />
                         <span>Back to Menu</span>
-                      </button>
+                      </motion.button>
 
                       {expandedSection === 'services' && (
-                        <div className="space-y-8 text-center">
+                        <div className="space-y-8">
                           {serviceCategories.map((category, index) => (
-                            <div key={index}>
-                              <h3 className="text-sm font-semibold text-gray-500 mb-3">{category.title}</h3>
-                              <div className="space-y-3">
+                            <motion.div 
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                            >
+                              <h3 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider">{category.title}</h3>
+                              <div className="space-y-3 pl-2 border-l-2 border-red-100">
                                 {category.items.map((item, itemIndex) => (
-                                  <RouterLink
+                                  <motion.div
                                     key={itemIndex}
-                                    to={item.href}
-                                    className="block py-2 text-gray-800 hover:text-red-500"
-                                    onClick={toggleMenu}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: (index * 0.1) + (itemIndex * 0.05) }}
                                   >
-                                    {item.name}
-                                  </RouterLink>
+                                    <RouterLink
+                                      to={item.href}
+                                      className="block py-2 pl-3 text-gray-800 hover:text-red-500 hover:bg-red-50 rounded-r-lg transition-all duration-200"
+                                      onClick={toggleMenu}
+                                    >
+                                      {item.name}
+                                    </RouterLink>
+                                  </motion.div>
                                 ))}
                               </div>
-                            </div>
+                            </motion.div>
                           ))}
                         </div>
                       )}
 
                       {expandedSection === 'about' && (
-                        <div className="space-y-4 text-center">
+                        <div className="space-y-4 pl-2 border-l-2 border-red-100">
                           {aboutItems.map((item, index) => (
-                            <RouterLink
+                            <motion.div
                               key={index}
-                              to={item.href}
-                              className="block py-2 text-gray-800 hover:text-red-500"
-                              onClick={toggleMenu}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 }}
                             >
-                              {item.name}
-                            </RouterLink>
+                              <RouterLink
+                                to={item.href}
+                                className="block py-3 pl-3 text-gray-800 hover:text-red-500 hover:bg-red-50 rounded-r-lg transition-all duration-200"
+                                onClick={toggleMenu}
+                              >
+                                {item.name}
+                              </RouterLink>
+                            </motion.div>
                           ))}
                         </div>
                       )}
@@ -301,73 +326,71 @@ const Header: React.FC = () => {
                   ) : (
                     <motion.nav
                       key="main-menu"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      className="w-full space-y-6 text-center"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="w-full space-y-5"
                     >
-                      <motion.button
-                        onClick={() => toggleSection('services')}
-                        className="w-full py-2 text-lg font-medium text-gray-800 hover:text-red-500 flex items-center justify-center"
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <LayoutGrid size={20} className="mr-2" />
-                        <span>Services</span>
-                        <ChevronRight size={20} className="ml-2" />
-                      </motion.button>
-
-                      <motion.button
-                        onClick={() => toggleSection('about')}
-                        className="w-full py-2 text-lg font-medium text-gray-800 hover:text-red-500 flex items-center justify-center"
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Info size={20} className="mr-2" />
-                        <span>About</span>
-                        <ChevronRight size={20} className="ml-2" />
-                      </motion.button>
-
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <RouterLink
-                          to="/news"
-                          className="block py-2 text-lg font-medium text-gray-800 hover:text-red-500 flex items-center justify-center"
-                          onClick={toggleMenu}
+                      {/* Main menu items with staggered animation */}
+                      {[
+                        { icon: <LayoutGrid size={22} />, text: language === 'en' ? 'Services' : 'Hizmetler', action: () => toggleSection('services'), hasSubmenu: true },
+                        { icon: <Info size={22} />, text: language === 'en' ? 'About' : 'Hakkımızda', action: () => toggleSection('about'), hasSubmenu: true },
+                        { icon: <Newspaper size={22} />, text: language === 'en' ? 'News' : 'Haberler', link: '/news' },
+                        { icon: <Phone size={22} />, text: language === 'en' ? 'Contact' : 'İletişim', link: '/contact' }
+                      ].map((item, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1, type: "spring", stiffness: 300, damping: 24 }}
+                          className="overflow-hidden"
                         >
-                          <Newspaper size={20} className="mr-2" />
-                          <span>{language === 'en' ? 'News' : 'Haberler'}</span>
-                        </RouterLink>
-                      </motion.div>
+                          {item.link ? (
+                            <RouterLink
+                              to={item.link}
+                              className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-800 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all duration-200"
+                              onClick={toggleMenu}
+                            >
+                              <div className="flex items-center">
+                                <span className="bg-red-50 p-2 rounded-lg mr-3 text-red-500">{item.icon}</span>
+                                <span>{item.text}</span>
+                              </div>
+                            </RouterLink>
+                          ) : (
+                            <button
+                              onClick={item.action}
+                              className="flex items-center justify-between w-full p-4 text-lg font-medium text-gray-800 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all duration-200"
+                            >
+                              <div className="flex items-center">
+                                <span className="bg-red-50 p-2 rounded-lg mr-3 text-red-500">{item.icon}</span>
+                                <span>{item.text}</span>
+                              </div>
+                              {item.hasSubmenu && <ChevronRight size={20} className="text-gray-400" />}
+                            </button>
+                          )}
+                        </motion.div>
+                      ))}
 
+                      {/* Language toggle */}
                       <motion.div
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.98 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4, type: "spring", stiffness: 300, damping: 24 }}
+                        className="pt-6 mt-6 border-t border-gray-100"
                       >
-                        <RouterLink
-                          to="/contact"
-                          className="block py-2 text-lg font-medium text-gray-800 hover:text-red-500 flex items-center justify-center"
-                          onClick={toggleMenu}
+                        <button 
+                          onClick={() => {
+                            toggleLanguage();
+                            toggleMenu();
+                          }}
+                          className="flex items-center space-x-3 mx-auto p-3 rounded-full bg-gray-50 text-gray-700 hover:bg-red-50 hover:text-red-500 transition-all duration-200"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          <Phone size={20} className="mr-2" />
-                          <span>{language === 'en' ? 'Contact' : 'İletişim'}</span>
-                        </RouterLink>
+                          <Globe size={20} />
+                          <span className="font-medium">{language === 'en' ? 'English' : 'Türkçe'}</span>
+                        </button>
                       </motion.div>
-
-                      <motion.button 
-                        onClick={() => {
-                          toggleLanguage();
-                          toggleMenu();
-                        }}
-                        className="flex items-center space-x-2 text-gray-800 hover:text-red-500 mx-auto"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Globe size={20} />
-                        <span>{language === 'en' ? 'EN' : 'TR'}</span>
-                      </motion.button>
                     </motion.nav>
                   )}
                 </AnimatePresence>

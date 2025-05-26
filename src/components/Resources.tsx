@@ -41,7 +41,7 @@ const Resources = () => {
       title: "Environment Policy",
       description: "Our environmental sustainability practices and commitments.",
       icon: <Leaf className="w-6 h-6" />,
-      downloadUrl: "/assets/src/documents/environment-policy.pdf",
+      downloadUrl: "/assets/documents/environment-policy.pdf",
       fileSize: "1.1 MB",
       lastUpdated: "2024-02-10"
     },
