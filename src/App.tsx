@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import SEO from './components/SEO';
@@ -23,13 +23,34 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 import CookieConsent from './components/CookieConsent';
 
 function App() {
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.cookiehub.eu/c2/44aa996f.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      const cpm = {};
+      if (window.cookiehub) {
+        window.cookiehub.load(cpm);
+      }
+    };
+
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <HelmetProvider>
       <Router>
         <ScrollToTop />
         <SEO />
         <AnimatePresence>
-          <motion.div 
+          <motion.div
             className="min-h-screen overflow-x-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

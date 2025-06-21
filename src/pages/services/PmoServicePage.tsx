@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ClipboardList, Target, Users, TrendingUp, CheckCircle2, ArrowRight } from 'lucide-react';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { Button } from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const PmoServicePage = () => {
+  const navigate = useNavigate();
+  
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div className="pt-20">
       <section className="py-20 bg-white">
@@ -53,7 +64,7 @@ const PmoServicePage = () => {
                   'Performance tracking and reporting'
                 ].map((item, index) => (
                   <li key={index} className="flex items-center text-gray-700">
-                    <CheckCircle2 className="w-5 h-5 text-primary-600 mr-3" />
+                    <CheckCircle2 className="w-5 h-5 text-red-600 mr-3" />
                     {item}
                   </li>
                 ))}
@@ -66,8 +77,8 @@ const PmoServicePage = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="relative"
             >
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary-200 rounded-lg" style={{ zIndex: 1 }}></div>
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary-100 rounded-lg" style={{ zIndex: 1 }}></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-red-200 rounded-lg" style={{ zIndex: 1 }}></div>
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-red-100 rounded-lg" style={{ zIndex: 1 }}></div>
               <div className="aspect-video rounded-xl overflow-hidden shadow-lg relative" style={{ zIndex: 2 }}>
                 <img 
                   src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" 
@@ -108,7 +119,7 @@ const PmoServicePage = () => {
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mb-4">
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -121,7 +132,7 @@ const PmoServicePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-primary-50 rounded-2xl p-8 md:p-12"
+            className="bg-red-50 rounded-2xl p-8 md:p-12"
           >
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
@@ -132,8 +143,8 @@ const PmoServicePage = () => {
               </p>
               <Button
                 size="lg"
-                className="bg-primary-600 hover:bg-primary-700"
-                onClick={() => window.location.href = '/contact'}
+                className="bg-red-600 hover:bg-red-700"
+                onClick={handleContactClick}
               >
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />

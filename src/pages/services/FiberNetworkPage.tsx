@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Network, Server, Shield, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { Button } from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const FiberNetworkPage = () => {
+  const navigate = useNavigate();
+  
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="pt-20">
       <section className="py-20 bg-white">
@@ -127,8 +137,8 @@ const FiberNetworkPage = () => {
               </p>
               <Button
                 size="lg"
-                className="bg-primary-600 hover:bg-primary-700"
-                onClick={() => window.location.href = '/contact'}
+                className="bg-red-600 hover:bg-red-700"
+                onClick={handleContactClick}
               >
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
